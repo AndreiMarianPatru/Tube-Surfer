@@ -19,6 +19,16 @@ public class Rotate : MonoBehaviour
     // Update is called once per frame
         void Update()
     {
-        transform.RotateAround(m_Center, Vector3.forward, 20 * Time.deltaTime);
+        if (Input.GetKey("q"))
+        {
+            transform.RotateAround(m_Center, Vector3.forward, 80 * Time.deltaTime);
+            Debug.Log("q");
+        }
+        if (Input.GetKey("e"))
+        {
+            transform.RotateAround(m_Center, Vector3.forward, -80 * Time.deltaTime);
+            Debug.Log("e");
+        }
+
     }
 }
