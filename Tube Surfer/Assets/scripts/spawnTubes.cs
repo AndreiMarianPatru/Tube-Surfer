@@ -38,9 +38,9 @@ public class spawnTubes : MonoBehaviour
 
     IEnumerator SpawnTubes()
     {
-        int tempint = Random.Range(0, tubes.Length - 1);
+        int tempint = Random.Range(0, tubes.Length );
         timeTemp += time;
-        temp = Instantiate(tubes[tempint], new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 90));
+        temp = Instantiate(tubes[tempint], new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 270));
         temp.transform.RotateAround(temp.GetComponent<Collider>().bounds.center, Vector3.forward, Random.Range(0, 360));
         yield return null;
     }
