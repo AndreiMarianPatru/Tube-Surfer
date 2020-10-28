@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadMainMenu : MonoBehaviour
+public class ObstacleCollision : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,9 +16,10 @@ public class LoadMainMenu : MonoBehaviour
     {
         
     }
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Player"))
+        Debug.Log("boom");
+        if (other.gameObject.tag=="Player")
         {
             SceneManager.LoadScene(0);
 

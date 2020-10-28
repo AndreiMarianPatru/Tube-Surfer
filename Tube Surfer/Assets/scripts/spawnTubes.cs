@@ -22,7 +22,7 @@ public class spawnTubes : MonoBehaviour
     void Update()
     {
      
-        if (Time.time >= timeTemp)
+        if (Time.deltaTime >= timeTemp)
         {
             timeTemp += time;
             temp=Instantiate(tube1, new Vector3(0,0,0), Quaternion.Euler(0, 90, 90));
