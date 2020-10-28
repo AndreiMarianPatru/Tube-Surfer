@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class spawnTubes : MonoBehaviour
 {
-    public  GameObject tube1;
+    public GameObject[] tubes;
+   
     public float time;
     public GameObject temp;
     private float timeTemp;
@@ -13,25 +14,34 @@ public class spawnTubes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeTemp = time;
-        temp = Instantiate(tube1, new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 90));
-        temp.transform.RotateAround(temp.GetComponent<Collider>().bounds.center, Vector3.forward, Random.Range(0, 360));
+        StartCoroutine(SpawnTubes());
+        //timeTemp = time;
+        //temp = Instantiate(tube1, new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 90));
+        //temp.transform.RotateAround(temp.GetComponent<Collider>().bounds.center, Vector3.forward, Random.Range(0, 360));
     }
 
     // Update is called once per frame
     void Update()
     {
      
-        if (Time.deltaTime >= timeTemp)
+        Debug.Log("deltatime "+ Time.timeSinceLevelLoad + " timetemp "+timeTemp);
+        if (Time.timeSinceLevelLoad >= timeTemp)
         {
-            timeTemp += time;
-            temp=Instantiate(tube1, new Vector3(0,0,0), Quaternion.Euler(0, 90, 90));
-            temp.transform.RotateAround(temp.GetComponent<Collider>().bounds.center, Vector3.forward, Random.Range(0,360));
+            Debug.Log("here");
+            StartCoroutine(SpawnTubes());
+
+            //timeTemp += time;
+            //temp=Instantiate(tube1, new Vector3(0,0,0), Quaternion.Euler(0, 90, 90));
+            //temp.transform.RotateAround(temp.GetComponent<Collider>().bounds.center, Vector3.forward, Random.Range(0,360));
         }
     }
 
-    IEnumerable SpawnTubes()
+    IEnumerator SpawnTubes()
     {
+        int tempint = Random.Range(0, tubes.Length - 1);
+        timeTemp += time;
+        temp = Instantiate(tubes[tempint], new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 90));
+        temp.transform.RotateAround(temp.GetComponent<Collider>().bounds.center, Vector3.forward, Random.Range(0, 360));
         yield return null;
     }
 }
