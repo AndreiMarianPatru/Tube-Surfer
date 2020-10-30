@@ -16,7 +16,7 @@ public class ObstacleCollision : MonoBehaviour
     {
         
     }
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         Debug.Log("boom");
         if (other.gameObject.tag=="Player")
