@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ObstacleCollision : MonoBehaviour
+public class tutorialTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,11 +16,10 @@ public class ObstacleCollision : MonoBehaviour
     {
         
     }
-    
-     void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-       Debug.Log("boom");
-        if (collision.gameObject.tag=="Player")
+        
+        if (other.gameObject.tag=="Player")
         {
             SceneManager.LoadScene(0);
 

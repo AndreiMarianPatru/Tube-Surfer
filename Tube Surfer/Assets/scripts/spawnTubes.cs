@@ -24,7 +24,7 @@ public class spawnTubes : MonoBehaviour
     void Update()
     {
      
-        Debug.Log("deltatime "+ Time.timeSinceLevelLoad + " timetemp "+timeTemp);
+       // Debug.Log("deltatime "+ Time.timeSinceLevelLoad + " timetemp "+timeTemp);
         if (Time.timeSinceLevelLoad >= timeTemp)
         {
             Debug.Log("here");

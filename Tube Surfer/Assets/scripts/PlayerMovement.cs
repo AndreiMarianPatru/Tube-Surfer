@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        rb.AddForce(Physics.gravity * 1.2f);
+        rb.AddForce(Physics.gravity * 1.0f);
 
     }
 
