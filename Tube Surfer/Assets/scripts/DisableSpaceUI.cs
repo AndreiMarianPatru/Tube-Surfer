@@ -9,10 +9,15 @@ public class DisableSpaceUI : MonoBehaviour
     private TextMeshProUGUI SpaceTXT;
     [SerializeField]
     private TextMeshProUGUI qeTXT;
+    [SerializeField]
+    private TextMeshProUGUI CanJump;
+    [SerializeField]
+    private TextMeshProUGUI CanNotJump;
     // Start is called before the first frame update
     void Start()
     {
         qeTXT.enabled = false;
+        CanNotJump.enabled = false;
     }
 
     // Update is called once per frame
@@ -27,7 +32,9 @@ public class DisableSpaceUI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SpaceTXT.enabled = false;
+            CanJump.enabled = false;
             qeTXT.enabled = true;
+            CanNotJump.enabled = true;
         }
     }
 
