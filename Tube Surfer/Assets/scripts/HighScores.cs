@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,15 +11,27 @@ public class HighScores : MonoBehaviour
 {
     public int[] highscores;
 
+    public TextMeshProUGUI one;
+    public TextMeshProUGUI two;
+    public TextMeshProUGUI three;
+    public TextMeshProUGUI four;
+    public TextMeshProUGUI five;
+
 
     public void AddToHS(int value)
     {
-       
-        if (value < highscores[highscores.Length-1]&&!highscores.Contains(value))
+        value = Random.Range(0, 100);
+        if (value > highscores[highscores.Length-1]&&!highscores.Contains(value))
         {
             highscores[highscores.Length - 1] = value;
         }
         Array.Sort(highscores);
+        Array.Reverse(highscores);
+        one.text = highscores[0].ToString();
+        two.text = highscores[1].ToString();
+        three.text = highscores[2].ToString();
+        four.text = highscores[3].ToString();
+        five.text = highscores[4].ToString();
     }
 
 
@@ -26,10 +39,16 @@ public class HighScores : MonoBehaviour
     {
         highscores= new int[10];
         for (int i = 0; i < highscores.Length; i++)
-            highscores[i] = 100-i;
-       
-        //Playerdata data = SaveSystem.loadplayer();
-        //highscores = data.highscores;
+            highscores[i] = i;
+
+        Playerdata data = SaveSystem.loadplayer();
+        highscores = data.highscores;
+
+        one.text = highscores[0].ToString();
+        two.text = highscores[1].ToString();
+        three.text = highscores[2].ToString();
+        four.text = highscores[3].ToString();
+        five.text = highscores[4].ToString();
     }
     void OnApplicationQuit()
     {
