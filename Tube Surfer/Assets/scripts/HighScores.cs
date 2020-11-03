@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 public class HighScores : MonoBehaviour
 {
-    public int[] highscores;
+    public static int[] highscores;
 
     public TextMeshProUGUI one;
     public TextMeshProUGUI two;
@@ -18,16 +18,24 @@ public class HighScores : MonoBehaviour
     public TextMeshProUGUI five;
 
 
-    public void AddToHS(int value)
+    public static void AddToHS(int value)
     {
-        value = Random.Range(0, 100);
+        if (highscores == null)
+        {
+            Debug.Log("highscores is null");
+            highscores = new int[10];
+           
+        }
+        Debug.Log("continue");
         if (value > highscores[highscores.Length-1]&&!highscores.Contains(value))
         {
             highscores[highscores.Length - 1] = value;
         }
         Array.Sort(highscores);
         Array.Reverse(highscores);
-     
+        Debug.Log(String.Join(" ", new List<int>(highscores).ConvertAll(i => i.ToString()).ToArray()));
+
+
     }
 
     public void DeleteHss()
@@ -42,16 +50,12 @@ public class HighScores : MonoBehaviour
 
     void Start()
     {
-        highscores= new int[10];
-        for (int i = 0; i < highscores.Length; i++)
-            highscores[i] = i;
+        SaveSystem.saveplayer(this);
+       
 
         Playerdata data = SaveSystem.loadplayer();
         highscores = data.highscores;
-
-      
-
-        Debug.Log(Application.persistentDataPath);
+        //Debug.Log(Application.persistentDataPath);
     }
     void OnApplicationQuit()
     {
@@ -59,9 +63,8 @@ public class HighScores : MonoBehaviour
     }
 
     void Update()
-    { 
-        Debug.Log("Human = " + String.Join(" ",
-            new List<int>(highscores).ConvertAll(i => i.ToString()).ToArray()));
+    {
+        Debug.Log(String.Join(" ", new List<int>(highscores).ConvertAll(i => i.ToString()).ToArray()));
 
         if (highscores[0].ToString() != "0")
         {

@@ -8,7 +8,7 @@ public class ObstacleCollision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       // HighScores.highscores= new int[10];
     }
 
     // Update is called once per frame
@@ -22,6 +22,7 @@ public class ObstacleCollision : MonoBehaviour
        Debug.Log("boom");
         if (collision.gameObject.tag=="Player")
         {
+            HighScores.AddToHS(Mathf.RoundToInt(Scoring.score));
             SceneManager.LoadScene(0);
 
         }

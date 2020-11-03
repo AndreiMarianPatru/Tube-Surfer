@@ -10,7 +10,7 @@ public class Playerdata
   
     public Playerdata(HighScores highscore)
     {
-        highscores = highscore.highscores;
+        highscores = HighScores.highscores;
     }
 
     

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Scoring : MonoBehaviour
 {
 
-    public float score;
+    public static float score;
 
     public TextMeshProUGUI scoreUI;
     // Start is called before the first frame update
