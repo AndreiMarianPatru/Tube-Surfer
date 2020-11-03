@@ -7,8 +7,11 @@ public class Playerdata
 {
     public int[] highscores;
 
+  
     public Playerdata(HighScores highscore)
     {
         highscores = highscore.highscores;
     }
+
+    
 }

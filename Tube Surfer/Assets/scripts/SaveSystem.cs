@@ -11,11 +11,12 @@ public static class SaveSystem
         BinaryFormatter formatter= new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.hs";
         FileStream stream = new FileStream(path,FileMode.Create);
-
         Playerdata data= new Playerdata(scores);
         formatter.Serialize(stream,data);
         stream.Close();
     }
+
+
 
     public static Playerdata loadplayer()
     {

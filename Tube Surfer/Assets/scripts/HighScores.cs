@@ -27,11 +27,16 @@ public class HighScores : MonoBehaviour
         }
         Array.Sort(highscores);
         Array.Reverse(highscores);
-        one.text = highscores[0].ToString();
-        two.text = highscores[1].ToString();
-        three.text = highscores[2].ToString();
-        four.text = highscores[3].ToString();
-        five.text = highscores[4].ToString();
+     
+    }
+
+    public void DeleteHss()
+    {
+        Debug.Log("here");
+        highscores= new int[10];
+        SaveSystem.saveplayer(this);
+        SaveSystem.loadplayer();
+     
     }
 
 
@@ -44,11 +49,9 @@ public class HighScores : MonoBehaviour
         Playerdata data = SaveSystem.loadplayer();
         highscores = data.highscores;
 
-        one.text = highscores[0].ToString();
-        two.text = highscores[1].ToString();
-        three.text = highscores[2].ToString();
-        four.text = highscores[3].ToString();
-        five.text = highscores[4].ToString();
+      
+
+        Debug.Log(Application.persistentDataPath);
     }
     void OnApplicationQuit()
     {
@@ -59,5 +62,59 @@ public class HighScores : MonoBehaviour
     { 
         Debug.Log("Human = " + String.Join(" ",
             new List<int>(highscores).ConvertAll(i => i.ToString()).ToArray()));
+
+        if (highscores[0].ToString() != "0")
+        {
+            one.text = highscores[0].ToString();
+        }
+        else
+        {
+            {
+                one.text = "";
+            }
+        }
+        if (highscores[1].ToString() != "0")
+        {
+            two.text = highscores[1].ToString();
+        }
+        else
+        {
+            {
+                two.text = "";
+            }
+        }
+        if (highscores[2].ToString() != "0")
+        {
+            three.text = highscores[2].ToString();
+        }
+        else
+        {
+            {
+                three.text = "";
+            }
+        }
+        if (highscores[3].ToString() != "0")
+        {
+            four.text = highscores[3].ToString();
+        }
+        else
+        {
+            {
+                four.text = "";
+            }
+        }
+        if (highscores[4].ToString() != "0")
+        {
+            five.text = highscores[4].ToString();
+        }
+        else
+        {
+            {
+                five.text = "";
+            }
+        }
+
+
+
     }
 }
