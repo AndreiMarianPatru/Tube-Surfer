@@ -24,7 +24,7 @@ public class DeleteTube : MonoBehaviour
         if (other.gameObject.tag == "Tube")
         {
             Debug.Log("this is called");
-            StartCoroutine(spawn.SpawnTubes(Vector3.zero));
+            StartCoroutine(spawn.SpawnTubes(new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y, other.gameObject.transform.position.z-113.6f)));
             Destroy(other.gameObject);
         }
     }

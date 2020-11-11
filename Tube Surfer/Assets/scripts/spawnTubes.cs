@@ -49,7 +49,7 @@ public class spawnTubes : MonoBehaviour
     {
         int tempint = Random.Range(0, tubes.Length);
 
-        temp = Instantiate(tubes[tempint], new Vector3(0, 0, 0), tubes[tempint].transform.rotation);
+        temp = Instantiate(tubes[tempint], position, tubes[tempint].transform.rotation);
         //temp.transform.RotateAround(temp.GetComponent<Collider>().bounds.center, Vector3.forward, Random.Range(0, 360));
         //Time.timeScale=0;
         yield return null;
