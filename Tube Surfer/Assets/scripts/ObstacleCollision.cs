@@ -19,11 +19,11 @@ public class ObstacleCollision : MonoBehaviour
     
      void OnCollisionEnter(Collision collision)
     {
-       Debug.Log("boom");
-        if (collision.gameObject.tag=="Player")
+       Debug.Log("boooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooom");
+        if (collision.gameObject.name== "player")
         {
             HighScores.AddToHS(Mathf.RoundToInt(Scoring.score));
-            SceneManager.LoadScene(0);
+          //  SceneManager.LoadScene(0);
 
         }
     }

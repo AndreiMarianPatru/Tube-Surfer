@@ -37,12 +37,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((jump == true) && (onGround == false))
         {
-            Debug.Log("wanted to jump but in air");
+           // Debug.Log("wanted to jump but in air");
         }
             if ((jump == true)&& (onGround==true))
         {
-            Debug.Log("jump");
-            Debug.Log("og " + onGround);
+           // Debug.Log("jump");
+          //  Debug.Log("og " + onGround);
 
             rb.AddForce(0, 4, 0, ForceMode.Impulse);
 

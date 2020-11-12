@@ -22,7 +22,7 @@ public class spawnTubes : MonoBehaviour
     //    zero.name = "Zero";
         //GameObject ninety=Instantiate(tubes[0], new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 270));
         //ninety.name = "90";
-        Time.timeScale = 4;
+       // Time.timeScale = 4;
         //StartCoroutine(SpawnTubes());
         //timeTemp = time;
         //temp = Instantiate(tube1, new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 90));

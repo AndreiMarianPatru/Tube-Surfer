@@ -26,14 +26,14 @@ public class HighScores : MonoBehaviour
             highscores = new int[10];
            
         }
-        Debug.Log("continue");
+   
         if (value > highscores[highscores.Length-1]&&!highscores.Contains(value))
         {
             highscores[highscores.Length - 1] = value;
         }
         Array.Sort(highscores);
         Array.Reverse(highscores);
-        Debug.Log(String.Join(" ", new List<int>(highscores).ConvertAll(i => i.ToString()).ToArray()));
+       // Debug.Log(String.Join(" ", new List<int>(highscores).ConvertAll(i => i.ToString()).ToArray()));
 
 
     }
