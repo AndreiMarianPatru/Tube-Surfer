@@ -6,6 +6,7 @@ public class PowerUps : MonoBehaviour
 {
     public bool GhostActive;
     public bool ScoreActive;
+    public bool SlowdownActive;
     public TextMeshProUGUI scoreUI;
 
     private GameObject[] Tubes;
@@ -15,6 +16,7 @@ public class PowerUps : MonoBehaviour
     {
         GhostActive = false;
         ScoreActive = false;
+        SlowdownActive = false;
     }
 
     // Update is called once per frame
@@ -29,6 +31,11 @@ public class PowerUps : MonoBehaviour
         {
             Debug.Log("y");
             StartCoroutine(ScoreMultiplier());
+        }
+        if (Input.GetKeyDown("u") && SlowdownActive == false)
+        {
+            Debug.Log("u");
+            StartCoroutine(Slowdown());
         }
     }
 
@@ -57,6 +64,15 @@ public class PowerUps : MonoBehaviour
         ScoreActive = false;
         gameObject.GetComponent<Scoring>().boost = 1;
         scoreUI.color = new Color32(255, 255, 255, 255);
+    }
+
+    private IEnumerator Slowdown()
+    {
+        SlowdownActive = true;
+        move.speed = move.speed / 2;
+        yield return new WaitForSeconds(5);
+        SlowdownActive = false;
+        move.speed *= 2;
     }
 
 
