@@ -619,6 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cca633ca43b2934ca7b47a6137c5d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boost: 0
   scoreUI: {fileID: 214969816}
 --- !u!114 &827316872
 MonoBehaviour:
@@ -633,6 +634,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GhostActive: 0
+  ScoreActive: 0
+  SlowdownActive: 0
+  scoreUI: {fileID: 214969816}
 --- !u!1 &1313935637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7274334368051325044, guid: 6d03c61e21417af41898070d0ffa0785, type: 3}
