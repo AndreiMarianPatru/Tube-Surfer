@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PowerUps : MonoBehaviour
 {
@@ -11,12 +12,19 @@ public class PowerUps : MonoBehaviour
 
     private GameObject[] Tubes;
 
+    public Slider ghostslider;
+    public Slider scoreslider;
+    public Slider slowdownslider;
+
     // Start is called before the first frame update
     private void Start()
     {
         GhostActive = false;
         ScoreActive = false;
         SlowdownActive = false;
+        ghostslider.value = 0;
+        slowdownslider.value = 0;
+        scoreslider.value = 0;
     }
 
     // Update is called once per frame
@@ -37,11 +45,30 @@ public class PowerUps : MonoBehaviour
             Debug.Log("u");
             StartCoroutine(Slowdown());
         }
+
+        if (GhostActive)
+        {
+            ghostslider.value -= Time.deltaTime / 5;
+
+        }
+        if (ScoreActive)
+        {
+            scoreslider.value -= Time.deltaTime / 5;
+
+        }
+        if (SlowdownActive)
+        {
+            slowdownslider.value -= Time.deltaTime / 5;
+
+        }
+
+
     }
 
     private IEnumerator Ghost()
     {
         GhostActive = true;
+        ghostslider.value = 1;
         Tubes = FindTubes();
         for (var i = 0; i < Tubes.Length; i++)
             foreach (Transform child in Tubes[i].transform)
@@ -58,6 +85,7 @@ public class PowerUps : MonoBehaviour
     private IEnumerator ScoreMultiplier()
     {
         ScoreActive = true;
+        scoreslider.value = 1;
         gameObject.GetComponent<Scoring>().boost = 5;
         scoreUI.color=new Color32(0, 255, 0, 255);
         yield return new WaitForSeconds(5);
@@ -69,6 +97,7 @@ public class PowerUps : MonoBehaviour
     private IEnumerator Slowdown()
     {
         SlowdownActive = true;
+        slowdownslider.value = 1;
         move.speed = move.speed / 2;
         yield return new WaitForSeconds(5);
         SlowdownActive = false;
