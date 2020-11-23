@@ -20,7 +20,7 @@ public class DeleteTube : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hit");
+       // Debug.Log("hit");
         if (other.gameObject.tag == "Tube")
         {
        

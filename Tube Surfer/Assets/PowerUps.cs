@@ -16,20 +16,31 @@ public class PowerUps : MonoBehaviour
     public Slider scoreslider;
     public Slider slowdownslider;
 
+    private float timer;
+   
+
     // Start is called before the first frame update
     private void Start()
     {
+        
         GhostActive = false;
         ScoreActive = false;
         SlowdownActive = false;
         ghostslider.value = 0;
         slowdownslider.value = 0;
         scoreslider.value = 0;
+
+        timer = Random.Range(10, 20);
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (Time.timeSinceLevelLoad >= timer)
+        {
+            StartCoroutine(GetPowerups());
+        }
+
         if (Input.GetKeyDown("t") && GhostActive == false)
         {
             Debug.Log("t");
@@ -96,12 +107,25 @@ public class PowerUps : MonoBehaviour
 
     private IEnumerator Slowdown()
     {
+        
         SlowdownActive = true;
         slowdownslider.value = 1;
-        move.speed = move.speed / 2;
+        Tubes = FindTubes();
+        foreach (GameObject tube in Tubes)
+        {
+            move localMove = tube.GetComponent<move>();
+            localMove.speed = localMove.speed / 2;
+        }
+        
+        
         yield return new WaitForSeconds(5);
         SlowdownActive = false;
-        move.speed *= 2;
+        foreach (GameObject tube in Tubes)
+        {
+            move localMove = tube.GetComponent<move>();
+            localMove.speed *= 2;
+        }
+       
     }
 
 
@@ -111,5 +135,58 @@ public class PowerUps : MonoBehaviour
         GameObject[] result;
         result = GameObject.FindGameObjectsWithTag("Tube");
         return result;
+    }
+
+    private void powerselector()
+    {
+        int temp = Random.Range(0, 3);
+        if (GhostActive && SlowdownActive && ScoreActive)
+        {
+            return;
+        }
+        switch (temp)
+        {
+            case 0:
+                if (!GhostActive)
+                {
+                    StartCoroutine(Ghost());
+                }
+                else
+                {
+                    powerselector();
+                }
+                break;
+            case 1:
+                if (!SlowdownActive)
+                {
+                    StartCoroutine(Slowdown());
+                }
+                else
+                {
+                    powerselector();
+                }
+                break;
+            case 2:
+                if (!ScoreActive)
+                {
+                    StartCoroutine(ScoreMultiplier());
+                }
+                else
+                {
+                    powerselector();
+                }
+                break;
+            
+        }
+        
+
+    }
+
+
+    private IEnumerator GetPowerups()
+    {
+        timer +=Random.Range(10, 20);
+        powerselector();
+        yield return new WaitForEndOfFrame();
     }
 }

@@ -9,7 +9,7 @@ public class getsize : MonoBehaviour
     {
         Mesh mesh = GetComponent<MeshFilter>().mesh;
         Vector3 objectSize = Vector3.Scale(transform.localScale, mesh.bounds.size);
-        Debug.Log(objectSize+" "+gameObject.name);
+      //  Debug.Log(objectSize+" "+gameObject.name);
         //Time.timeScale=0;
     }
 

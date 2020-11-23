@@ -22,7 +22,7 @@ public class HighScores : MonoBehaviour
     {
         if (highscores == null)
         {
-            Debug.Log("highscores is null");
+           // Debug.Log("highscores is null");
             highscores = new int[10];
            
         }
