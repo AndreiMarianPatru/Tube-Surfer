@@ -6,9 +6,11 @@ public class CollectPowerUp : MonoBehaviour
 {
     // Start is called before the first frame update
     private PowerUps powers;
+    private bool flag;
     void Start()
     {
-        PowerUps powers = GameObject.Find("GameManager").GetComponent<PowerUps>();
+        powers = GameObject.Find("GameManager").GetComponent<PowerUps>();
+        flag = false;
     }
 
     // Update is called once per frame
@@ -19,6 +21,17 @@ public class CollectPowerUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(powers.GetPowerups());
+        if (flag == false)
+        {
+            flag = true;
+            Debug.Log("this is called");
+            StartCoroutine(powers.GetPowerups());
+        }
+      
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        flag = false;
+
     }
 }
