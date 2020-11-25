@@ -42,19 +42,28 @@ public class powerupmove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("q"))
+        if (closestTube == null)
         {
-            transform.RotateAround(m_Center, Vector3.forward, 80 * Time.deltaTime);
-            // Debug.Log("q");
+            Destroy(this.gameObject);
+            
         }
-        if (Input.GetKey("e"))
+        else
         {
-            transform.RotateAround(m_Center, Vector3.forward, -80 * Time.deltaTime);
-            //  Debug.Log("e");
-        }
+            if (Input.GetKey("q"))
+            {
+                transform.RotateAround(m_Center, Vector3.forward, 80 * Time.deltaTime);
+                // Debug.Log("q");
+            }
+            if (Input.GetKey("e"))
+            {
+                transform.RotateAround(m_Center, Vector3.forward, -80 * Time.deltaTime);
+                //  Debug.Log("e");
+            }
 
-        difference = closestTube.transform.position.z - startPosTarget;
-        this.transform.position = new Vector3(transform.position.x, transform.position.y, startPosObj + difference);
+            difference = closestTube.transform.position.z - startPosTarget;
+            this.transform.position = new Vector3(transform.position.x, transform.position.y, startPosObj + difference);
+        }
+       
         
 
     }

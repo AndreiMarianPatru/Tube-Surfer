@@ -9,7 +9,8 @@ public class DeleteTube : MonoBehaviour
     void Start()
     {
         spawn=GameObject.Find("GameManager").GetComponent<spawnTubes>();
-       
+        Time.timeScale = 1;
+
     }
 
     // Update is called once per frame
@@ -20,12 +21,20 @@ public class DeleteTube : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       // Debug.Log("hit");
+        // Debug.Log("hit");
+     
+
         if (other.gameObject.tag == "Tube")
         {
-       
-            StartCoroutine(spawn.SpawnTubes(new Vector3(0,0, other.gameObject.transform.position.z-113.6f)));
+            StartCoroutine(wait());
+            StartCoroutine(spawn.SpawnTubes(new Vector3(0,0, other.gameObject.transform.position.z-113.5f)));
             Destroy(other.gameObject);
         }
+       
+        
+    }
+    private IEnumerator wait()
+    {
+        yield return new WaitForFixedUpdate();
     }
 }

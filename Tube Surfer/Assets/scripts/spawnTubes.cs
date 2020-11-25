@@ -52,6 +52,6 @@ public class spawnTubes : MonoBehaviour
         temp = Instantiate(tubes[tempint], position, tubes[tempint].transform.rotation);
         //temp.transform.RotateAround(temp.GetComponent<Collider>().bounds.center, Vector3.forward, Random.Range(0, 360));
         //Time.timeScale=0;
-        yield return null;
+        yield return new WaitForFixedUpdate();
     }
 }

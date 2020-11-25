@@ -113,21 +113,21 @@ public class PowerUps : MonoBehaviour
         SlowdownActive = true;
         slowdownslider.value = 1;
         Tubes = FindTubes();
-        foreach (GameObject tube in Tubes)
-        {
-            move localMove = tube.GetComponent<move>();
-            localMove.speed = localMove.speed / 2;
-        }
-        
+        //foreach (GameObject tube in Tubes)
+        //{
+        //    move localMove = tube.GetComponent<move>();
+        //    localMove.speed = localMove.speed / 2;
+        //}
+        move.speed/=2;
         
         yield return new WaitForSeconds(5);
         SlowdownActive = false;
-        foreach (GameObject tube in Tubes)
-        {
-            move localMove = tube.GetComponent<move>();
-            localMove.speed *= 2;
-        }
-       
+        //foreach (GameObject tube in Tubes)
+        //{
+        //    move localMove = tube.GetComponent<move>();
+        //    localMove.speed *= 2;
+        //}
+        move.speed *= 2;
     }
 
 
