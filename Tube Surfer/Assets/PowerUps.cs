@@ -183,7 +183,7 @@ public class PowerUps : MonoBehaviour
     }
 
 
-    private IEnumerator GetPowerups()
+    public IEnumerator GetPowerups()
     {
         timer +=Random.Range(10, 20);
         powerselector();
