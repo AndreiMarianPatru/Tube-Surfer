@@ -23,7 +23,7 @@ public class powerupmove : MonoBehaviour
     Vector3 m_Center;
     private GameObject closestTube;
     private float startPosTarget;
-    private float startPosObj;
+    public float startPosObj;
     private float difference;
 
 
@@ -42,6 +42,8 @@ public class powerupmove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (closestTube == null)
         {
             Destroy(this.gameObject);

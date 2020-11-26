@@ -19,7 +19,7 @@ public class move : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("speed is "+speed);
+       // Debug.Log("speed is "+speed);
         //speed=5.0f;
         flag=false;
         temptime=10;
@@ -28,7 +28,7 @@ public class move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("speed"+speed);
+      //  Debug.Log("speed"+speed);
         transform.Translate(new Vector3(0.0f,0.0f,speed) * Time.deltaTime, Space.World);
        //Debug.Log("speed= "+speed);
         if(Time.timeSinceLevelLoad>=temptime)

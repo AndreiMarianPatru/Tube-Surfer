@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tube
   - PowerUP
+  - Obstacle
   layers:
   - Default
   - TransparentFX

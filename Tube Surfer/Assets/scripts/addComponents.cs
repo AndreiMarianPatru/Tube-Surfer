@@ -18,9 +18,10 @@ public class addComponents : MonoBehaviour
                 child.gameObject.GetComponent<Rigidbody>().useGravity = false;
                 child.gameObject.AddComponent<MeshCollider>();
                 child.gameObject.AddComponent<ObstacleCollision>();
-                
-         
-            
+                child.gameObject.tag = "Obstacle";
+
+
+
         }
     }
 

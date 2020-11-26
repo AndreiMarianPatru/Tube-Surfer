@@ -25,8 +25,8 @@ public class ObstacleCollision : MonoBehaviour
           
             HighScores.AddToHS(Mathf.RoundToInt(Scoring.score));
             //Time.timeScale = 0;
-            Debug.Log(collision.gameObject.name+" hit"+gameObject.name+" at "+collision.contacts+"11111111111111111111111111111111111111111111111");
-          //  SceneManager.LoadScene(0);
+            Debug.Log(collision.gameObject.name+" hit "+gameObject.name+" at "+collision.contacts);
+            SceneManager.LoadScene(0);
 
         }
     }
