@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class terrainMovement : MonoBehaviour
+public class mydebug : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,4 +15,5 @@ public class terrainMovement : MonoBehaviour
     {
         
     }
+
 }
