@@ -9,6 +9,8 @@ public class move : MonoBehaviour
     public static float speed;
     bool flag;
     int temptime;
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,6 +25,7 @@ public class move : MonoBehaviour
         //speed=5.0f;
         flag=false;
         temptime=10;
+       
     }
 
     // Update is called once per frame
@@ -42,8 +45,9 @@ public class move : MonoBehaviour
     public void increaseSpeed()
     {
         Debug.Log("called increase");
-        if (speed <= 20&&flag==true)
+        if (speed <= 20&&flag==true&& !GameObject.Find("GameManager").GetComponent<PowerUps>().SlowdownActive)
         {
+            Debug.Log("accepted increase");
             speed+=0.5f;
             
         }

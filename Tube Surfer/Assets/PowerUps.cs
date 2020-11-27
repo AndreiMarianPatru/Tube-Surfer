@@ -1,28 +1,33 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PowerUps : MonoBehaviour
 {
     public bool GhostActive;
+
+    public Slider ghostslider;
     public bool ScoreActive;
-    public bool SlowdownActive;
+    public Slider scoreslider;
     public TextMeshProUGUI scoreUI;
+    public bool SlowdownActive;
+    public Slider slowdownslider;
+    private bool slowdowsnactive1;
+    private bool slowdowsnactive2;
+
+    private float t;
+
+    private float timer;
 
     private GameObject[] Tubes;
 
-    public Slider ghostslider;
-    public Slider scoreslider;
-    public Slider slowdownslider;
-
-    private float timer;
-   
 
     // Start is called before the first frame update
     private void Start()
     {
-        
         GhostActive = false;
         ScoreActive = false;
         SlowdownActive = false;
@@ -31,50 +36,40 @@ public class PowerUps : MonoBehaviour
         scoreslider.value = 0;
 
         timer = Random.Range(10, 20);
+        slowdowsnactive1 = false;
+        slowdowsnactive2 = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (Time.timeSinceLevelLoad >= timer)
-        {
-            StartCoroutine(GetPowerups());
-        }
+        if (Time.timeSinceLevelLoad >= timer) StartCoroutine(GetPowerups());
 
         if (Input.GetKeyDown("t") && GhostActive == false)
         {
             Debug.Log("t");
             StartCoroutine(Ghost());
         }
+
         if (Input.GetKeyDown("y") && ScoreActive == false)
         {
             Debug.Log("y");
             StartCoroutine(ScoreMultiplier());
         }
+
         if (Input.GetKeyDown("u") && SlowdownActive == false)
         {
             Debug.Log("u");
             StartCoroutine(Slowdown());
         }
 
-        if (GhostActive)
-        {
-            ghostslider.value -= Time.deltaTime / 5;
+        if (GhostActive) ghostslider.value -= Time.deltaTime / 5;
+        if (ScoreActive) scoreslider.value -= Time.deltaTime / 5;
 
-        }
-        if (ScoreActive)
-        {
-            scoreslider.value -= Time.deltaTime / 5;
-
-        }
-        if (SlowdownActive)
-        {
-            slowdownslider.value -= Time.deltaTime / 5;
-
-        }
-
-
+        if (SlowdownActive) slowdownslider.value -= Time.deltaTime / 5;
+        // Debug.Log("Speed "+move.speed);
     }
+
 
     private IEnumerator Ghost()
     {
@@ -83,7 +78,7 @@ public class PowerUps : MonoBehaviour
         Tubes = FindTubes();
         for (var i = 0; i < Tubes.Length; i++)
             foreach (Transform child in Tubes[i].transform)
-              
+
                 child.gameObject.GetComponent<MeshCollider>().enabled = false;
 
         yield return new WaitForSeconds(5);
@@ -91,8 +86,8 @@ public class PowerUps : MonoBehaviour
         Tubes = FindTubes();
         for (var i = 0; i < Tubes.Length; i++)
             foreach (Transform child in Tubes[i].transform)
-               
-                    child.gameObject.GetComponent<MeshCollider>().enabled = true;
+
+                child.gameObject.GetComponent<MeshCollider>().enabled = true;
     }
 
     private IEnumerator ScoreMultiplier()
@@ -100,7 +95,7 @@ public class PowerUps : MonoBehaviour
         ScoreActive = true;
         scoreslider.value = 1;
         gameObject.GetComponent<Scoring>().boost = 5;
-        scoreUI.color=new Color32(0, 255, 0, 255);
+        scoreUI.color = new Color32(0, 255, 0, 255);
         yield return new WaitForSeconds(5);
         ScoreActive = false;
         gameObject.GetComponent<Scoring>().boost = 1;
@@ -109,27 +104,36 @@ public class PowerUps : MonoBehaviour
 
     private IEnumerator Slowdown()
     {
-        
-        SlowdownActive = true;
+  
         slowdownslider.value = 1;
-        Tubes = FindTubes();
-        //foreach (GameObject tube in Tubes)
-        //{
-        //    move localMove = tube.GetComponent<move>();
-        //    localMove.speed = localMove.speed / 2;
-        //}
-        move.speed/=2;
-        
-        yield return new WaitForSeconds(5);
-        SlowdownActive = false;
-        //foreach (GameObject tube in Tubes)
-        //{
-        //    move localMove = tube.GetComponent<move>();
-        //    localMove.speed *= 2;
-        //}
-        move.speed *= 2;
-    }
+        SlowdownActive = true;
+        double elapsed = 0f;
+        double waitTime = Math.Sqrt(3f);
+        var startSpeed = move.speed;
+        var targetSpeed = move.speed / 2;
 
+        while (elapsed < waitTime)
+        {
+            elapsed += Time.deltaTime / waitTime;
+            move.speed = Mathf.Lerp(startSpeed, targetSpeed, (float)elapsed);
+            yield return null;
+        }
+
+   
+        yield return new WaitForSeconds(2);
+    
+
+        elapsed = 0f;
+        while (elapsed < waitTime)
+        {
+            elapsed += Time.deltaTime / waitTime;
+            move.speed = Mathf.Lerp(targetSpeed, startSpeed, (float)elapsed);
+            yield return null;
+        }
+     
+        SlowdownActive = false;
+      
+    }
 
 
     private GameObject[] FindTubes()
@@ -141,53 +145,35 @@ public class PowerUps : MonoBehaviour
 
     private void powerselector()
     {
-        int temp = Random.Range(0, 3);
-        if (GhostActive && SlowdownActive && ScoreActive)
-        {
-            return;
-        }
+        var temp = Random.Range(0, 3);
+        if (GhostActive && SlowdownActive && ScoreActive) return;
         switch (temp)
         {
             case 0:
                 if (!GhostActive)
-                {
                     StartCoroutine(Ghost());
-                }
                 else
-                {
                     powerselector();
-                }
                 break;
             case 1:
                 if (!SlowdownActive)
-                {
                     StartCoroutine(Slowdown());
-                }
                 else
-                {
                     powerselector();
-                }
                 break;
             case 2:
                 if (!ScoreActive)
-                {
                     StartCoroutine(ScoreMultiplier());
-                }
                 else
-                {
                     powerselector();
-                }
                 break;
-            
         }
-        
-
     }
 
 
     public IEnumerator GetPowerups()
     {
-        timer +=Random.Range(10, 20);
+        timer += Random.Range(10, 20);
         powerselector();
         yield return new WaitForEndOfFrame();
     }
