@@ -43,10 +43,10 @@ public class PlayerMovement : MonoBehaviour
         
 
         if (up && onGround)
-            rb.AddForce(0, 8, 0, ForceMode.Impulse);
+            rb.AddForce(0, 6.5f, 0, ForceMode.Impulse);
         if (down && onGround == false)
         {
-            rb.AddForce(0, -8, 0, ForceMode.Impulse);
+            rb.AddForce(0, -6.5f, 0, ForceMode.Impulse);
         }
         else
         {
