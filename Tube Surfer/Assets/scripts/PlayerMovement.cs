@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
         up = false;
         down = false;
         onGround = false;
+        Time.timeScale = 0.1f;
     }
 
     private void Update()
@@ -31,12 +32,15 @@ public class PlayerMovement : MonoBehaviour
         else
             down = false;
         // Debug.Log(rb.velocity.y);
+        var clampedPosition = transform.position;
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, -1.694134f, -0.56f);
+        transform.position = clampedPosition;
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-       
+        
 
         if (up && onGround)
             rb.AddForce(0, 8, 0, ForceMode.Impulse);
@@ -44,12 +48,19 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(0, -8, 0, ForceMode.Impulse);
         }
+        else
+        {
+            rb.AddForce(Physics.gravity * 1.0f);
 
-        rb.AddForce(Physics.gravity * 1.0f);
+        }
 
-        var clampedPosition = transform.position;
-        clampedPosition.y = Mathf.Clamp(clampedPosition.y, -1.694148f, -0.56f);
-        transform.position = clampedPosition;
+
+        
+    }
+
+    void LateUpdate()
+    {
+     
     }
 
 
