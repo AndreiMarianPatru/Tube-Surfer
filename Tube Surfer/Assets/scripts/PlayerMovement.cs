@@ -1,84 +1,73 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private bool onGround;
     private Rigidbody rb;
 
-    private bool jump;
+    private bool up;
+    private bool down;
+   
 
-    private bool onGround;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        jump = false;
+        up = false;
+        down = false;
         onGround = false;
-
     }
 
-    void Update()
+    private void Update()
     {
         //Debug.Log(rb.velocity);
-        if (Input.GetKey("space"))
-        {
-            jump = true;
-        }
+        if (Input.GetKey("w"))
+            up = true;
         else
-        {
-            jump = false;
-        }
-       // Debug.Log(rb.velocity.y);
+            up = false;
+        if (Input.GetKey("s"))
+            down = true;
+        else
+            down = false;
+        // Debug.Log(rb.velocity.y);
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if ((jump == true) && (onGround == false))
-        {
-           // Debug.Log("wanted to jump but in air");
-        }
-            if ((jump == true)&& (onGround==true))
-        {
-           // Debug.Log("jump");
-          //  Debug.Log("og " + onGround);
+       
 
-            rb.AddForce(0, 4, 0, ForceMode.Impulse);
-
+        if (up && onGround)
+            rb.AddForce(0, 8, 0, ForceMode.Impulse);
+        if (down && onGround == false)
+        {
+            rb.AddForce(0, -8, 0, ForceMode.Impulse);
         }
-            
 
         rb.AddForce(Physics.gravity * 1.0f);
 
-        Vector3 clampedPosition = transform.position;
+        var clampedPosition = transform.position;
         clampedPosition.y = Mathf.Clamp(clampedPosition.y, -1.694148f, -0.56f);
         transform.position = clampedPosition;
-
     }
 
-  
-    void OnCollisionStay (Collision collisionInfo)
+
+    private void OnCollisionStay(Collision collisionInfo)
     {
         // Debug-draw all contact points and normals
-        foreach (ContactPoint contact in collisionInfo.contacts)
-        {
+        foreach (var contact in collisionInfo.contacts)
             if (contact.otherCollider.gameObject.tag == "Tube")
-            {
                 onGround = true;
 //Debug.Log("og "+onGround);
-
-            }
-        }
     }
-    void OnCollisionExit(Collision collisionInfo)
+
+    private void OnCollisionExit(Collision collisionInfo)
     {
         if (collisionInfo.gameObject.tag == "Tube")
-        {
             //Debug.Log("no tube");
             onGround = false;
-          //  Debug.Log("og " + onGround);
-        }
+        //  Debug.Log("og " + onGround);
         // Debug-draw all contact points and normals
         //foreach (ContactPoint contact in collisionInfo.contacts)
         //{
