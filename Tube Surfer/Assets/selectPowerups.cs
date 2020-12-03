@@ -7,8 +7,8 @@ public class selectPowerups : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string name = gameObject.name;
-        int temp = Random.Range(0, gameObject.transform.childCount);
+       
+     
         
         List<GameObject> Children = new List<GameObject>();
         foreach (Transform child in transform)
@@ -18,8 +18,9 @@ public class selectPowerups : MonoBehaviour
                 Children.Add(child.gameObject);
             }
         }
+        int temp = Random.Range(0, Children.Count);
 
-        for (int i = 0; i < gameObject.transform.childCount; i++)
+        for (int i = 0; i < Children.Count; i++)
         {
             if (i != temp)
             {

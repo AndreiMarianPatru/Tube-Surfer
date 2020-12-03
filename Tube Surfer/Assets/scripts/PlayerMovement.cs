@@ -47,8 +47,13 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(0, 4, 0, ForceMode.Impulse);
 
         }
+            
 
         rb.AddForce(Physics.gravity * 1.0f);
+
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, -1.694148f, -0.56f);
+        transform.position = clampedPosition;
 
     }
 

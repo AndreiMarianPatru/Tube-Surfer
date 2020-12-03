@@ -22,11 +22,13 @@ public class Rotate : MonoBehaviour
         if (Input.GetKey("q"))
         {
             transform.RotateAround(m_Center, Vector3.forward, 80 * Time.deltaTime);
+           
            // Debug.Log("q");
         }
         if (Input.GetKey("e"))
         {
             transform.RotateAround(m_Center, Vector3.forward, -80 * Time.deltaTime);
+          
           //  Debug.Log("e");
         }
 
