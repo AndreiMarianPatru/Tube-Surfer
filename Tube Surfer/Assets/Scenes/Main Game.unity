@@ -401,7 +401,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 10.028, y: 180, z: 0}
 --- !u!1 &155588984
 GameObject:
@@ -503,7 +503,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &214969814
 GameObject:
@@ -1147,7 +1147,6 @@ MonoBehaviour:
   tubes:
   - {fileID: 7198861692512376622, guid: d50265a2a028e8845b1df3f871835cf2, type: 3}
   - {fileID: 4722935418957362204, guid: 0f55c83dd44cf6344a175d742cd5862d, type: 3}
-  PowerUpPrefab: {fileID: 896849615421964104, guid: 899e293f21809f84c86ad5298480ca2d, type: 3}
   temp: {fileID: 0}
 --- !u!4 &827316869
 Transform:
@@ -1202,11 +1201,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GhostActive: 0
-  ScoreActive: 0
-  SlowdownActive: 0
-  scoreUI: {fileID: 214969816}
   ghostslider: {fileID: 443448874}
+  ScoreActive: 0
   scoreslider: {fileID: 1414441260}
+  scoreUI: {fileID: 214969816}
+  SlowdownActive: 0
   slowdownslider: {fileID: 2118844074}
 --- !u!114 &827316873
 MonoBehaviour:
@@ -1215,7 +1214,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827316867}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43e1ea03503a4c84682196bdb7ec0816, type: 3}
   m_Name: 
@@ -2150,7 +2149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5311656321406919076, guid: cdd6abbdea1db4a45bd8c80b24652e51, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5311656321406919076, guid: cdd6abbdea1db4a45bd8c80b24652e51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2203,7 +2202,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7274334368051325042, guid: 6d03c61e21417af41898070d0ffa0785, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7274334368051325042, guid: 6d03c61e21417af41898070d0ffa0785, type: 3}
       propertyPath: m_LocalScale.x
@@ -2267,7 +2266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7274334368051325044, guid: 6d03c61e21417af41898070d0ffa0785, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7274334368051325044, guid: 6d03c61e21417af41898070d0ffa0785, type: 3}
       propertyPath: m_TagString

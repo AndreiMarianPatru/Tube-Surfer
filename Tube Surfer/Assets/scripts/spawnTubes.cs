@@ -9,7 +9,7 @@ public class spawnTubes : MonoBehaviour
 {
     
     public  GameObject[] tubes;
-    public GameObject PowerUpPrefab;
+  
 
     //public float time;
     public  GameObject temp;
@@ -51,7 +51,7 @@ public class spawnTubes : MonoBehaviour
         int tempint = Random.Range(0, tubes.Length);
 
         GameObject temp = Instantiate(tubes[tempint], position, tubes[tempint].transform.rotation);
-        SpawnPoweUPs(position);
+       
         Debug.Log("tube instantiated at "+position);
         //temp.transform.RotateAround(temp.GetComponent<Collider>().bounds.center, Vector3.forward, Random.Range(0, 360));
         //Time.timeScale=0;
@@ -59,10 +59,6 @@ public class spawnTubes : MonoBehaviour
        
     }
 
-    public void SpawnPoweUPs(Vector3 position)
-    {
-        GameObject Powerup = Instantiate(PowerUpPrefab, new Vector3(2.25f, -1.8f, Random.Range(position.z - 20, position.z + 20)), Quaternion.identity);
-    }
-
+   
    
 }
