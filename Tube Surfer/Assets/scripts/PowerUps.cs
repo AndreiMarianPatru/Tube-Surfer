@@ -95,11 +95,19 @@ public class PowerUps : MonoBehaviour
         ScoreActive = true;
         scoreslider.value = 1;
         gameObject.GetComponent<Scoring>().boost = 5;
-        scoreUI.color = new Color32(0, 255, 0, 255);
+        if (scoreUI)
+        {
+            scoreUI.color = new Color32(0, 255, 0, 255);
+
+        }
         yield return new WaitForSeconds(5);
         ScoreActive = false;
         gameObject.GetComponent<Scoring>().boost = 1;
-        scoreUI.color = new Color32(255, 255, 255, 255);
+        if (scoreUI)
+        {
+            scoreUI.color = new Color32(255, 255, 255, 255);
+
+        }
     }
 
     private IEnumerator Slowdown()

@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
         up = false;
         down = false;
         onGround = false;
-        Time.timeScale = 0.1f;
+       
     }
 
     private void Update()
