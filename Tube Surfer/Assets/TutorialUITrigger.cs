@@ -21,7 +21,6 @@ public class TutorialUITrigger : MonoBehaviour
     {
         if (other.gameObject.name == "trigger1")
         {
-            Debug.Log("callbefore");
             StartCoroutine(powerups.ActivateUI1());
         }
         if (other.gameObject.name == "trigger2")

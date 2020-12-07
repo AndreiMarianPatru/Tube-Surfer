@@ -9,7 +9,7 @@ public class TutorialPowerUpsEnable : MonoBehaviour
     public GameObject UI1;
     public GameObject UI2;
     public GameObject UI3;
-    public GameObject gool;
+
     void Start()
     {
         mycontinue = false;
@@ -28,10 +28,7 @@ public class TutorialPowerUpsEnable : MonoBehaviour
             mycontinue = true;
         }
 
-        if (Input.GetKeyUp("p"))
-        {
-            StartCoroutine(ActivateUI1());
-        }
+     
 
        
         

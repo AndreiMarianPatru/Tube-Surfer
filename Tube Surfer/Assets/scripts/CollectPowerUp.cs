@@ -21,12 +21,17 @@ public class CollectPowerUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (flag == false)
+        if (other.gameObject.tag == "Player")
         {
-            flag = true;
-            Debug.Log("this is called");
-            StartCoroutine(powers.GetPowerups());
+            Debug.Log("collision powerup");
+            if (flag == false)
+            {
+                flag = true;
+                Debug.Log("this is called");
+                StartCoroutine(powers.GetPowerups());
+            }
         }
+       
       
     }
     private void OnTriggerExit(Collider other)

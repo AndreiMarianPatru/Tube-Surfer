@@ -22,7 +22,11 @@ public class TutorialActivatePowerUPs : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        PowerupUI.SetActive(true);
-        PowerUpscript.enabled = true;
+        if (other.gameObject.name == "player")
+        {
+            PowerupUI.SetActive(true);
+            PowerUpscript.enabled = true;
+        }
+        
     }
 }

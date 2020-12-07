@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class move : MonoBehaviour
 {
-
+    public  bool tutorial;
     public static float speed;
     bool flag;
     int temptime;
@@ -44,14 +44,19 @@ public class move : MonoBehaviour
 
     public void increaseSpeed()
     {
-        Debug.Log("called increase");
-        if (speed <= 20&&flag==true&& !GameObject.Find("GameManager").GetComponent<PowerUps>().SlowdownActive)
+        if (tutorial == true)
         {
-            Debug.Log("accepted increase");
-            speed+=0.5f;
-            
+            Debug.Log("called increase");
+            if (speed <= 20 && flag == true && !GameObject.Find("GameManager").GetComponent<PowerUps>().SlowdownActive)
+            {
+                Debug.Log("accepted increase");
+                speed += 0.5f;
+
+            }
+            flag = false;
+
         }
-        flag=false;
+        
 
     }
 }

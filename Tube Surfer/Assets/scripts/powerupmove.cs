@@ -70,6 +70,15 @@ public class powerupmove : MonoBehaviour
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Tube");
         GameObject closesttube = null;
+
+        if (objs.Length != 0)
+        {
+             closesttube = objs[0];
+        }
+        else
+        {
+            return null;
+        }
         float closestDistance=0;
         bool first = true;
 

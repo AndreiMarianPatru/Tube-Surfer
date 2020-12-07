@@ -78,7 +78,7 @@ public class PowerUps : MonoBehaviour
         Tubes = FindTubes();
         for (var i = 0; i < Tubes.Length; i++)
             foreach (Transform child in Tubes[i].transform)
-
+                if(child.gameObject.tag=="Obstacle")
                 child.gameObject.GetComponent<MeshCollider>().enabled = false;
 
         yield return new WaitForSeconds(5);
@@ -86,8 +86,8 @@ public class PowerUps : MonoBehaviour
         Tubes = FindTubes();
         for (var i = 0; i < Tubes.Length; i++)
             foreach (Transform child in Tubes[i].transform)
-
-                child.gameObject.GetComponent<MeshCollider>().enabled = true;
+                if (child.gameObject.tag == "Obstacle")
+                    child.gameObject.GetComponent<MeshCollider>().enabled = true;
     }
 
     private IEnumerator ScoreMultiplier()
