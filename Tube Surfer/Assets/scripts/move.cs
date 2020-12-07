@@ -44,7 +44,7 @@ public class move : MonoBehaviour
 
     public void increaseSpeed()
     {
-        if (tutorial == true)
+        if (tutorial == false)
         {
             Debug.Log("called increase");
             if (speed <= 20 && flag == true && !GameObject.Find("GameManager").GetComponent<PowerUps>().SlowdownActive)
