@@ -32,18 +32,17 @@ public class PlayerMovement : MonoBehaviour
         else
             down = false;
         // Debug.Log(rb.velocity.y);
-        var clampedPosition = transform.position;
-        clampedPosition.y = Mathf.Clamp(clampedPosition.y, -1.694134f, -0.56f);
-        transform.position = clampedPosition;
+        
+
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-        
+    
 
         if (up && onGround)
-            rb.AddForce(0, 4.5f, 0, ForceMode.Impulse);
+            rb.AddForce(0, 6.5f, 0, ForceMode.Impulse);
         if (down && onGround == false)
         {
             rb.AddForce(0, -6.5f, 0, ForceMode.Impulse);
@@ -53,14 +52,18 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Physics.gravity);
 
         }
+        var clampedPosition = transform.position;
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, -1.694134f, -0.56f);
+        gameObject.transform.SetPositionAndRotation(new Vector3(transform.position.x, Mathf.SmoothStep(clampedPosition.y, transform.position.y, Time.deltaTime), transform.position.z),Quaternion.identity);
+       // transform.position = new Vector3(transform.position.x, Mathf.SmoothStep(clampedPosition.y, transform.position.y, Time.deltaTime), transform.position.z);
 
 
-        
+
     }
 
     void LateUpdate()
     {
-     
+       
     }
 
 
