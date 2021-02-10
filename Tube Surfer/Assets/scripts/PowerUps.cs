@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -45,23 +47,23 @@ public class PowerUps : MonoBehaviour
     {
         if (Time.timeSinceLevelLoad >= timer) StartCoroutine(GetPowerups());
 
-        if (Input.GetKeyDown("t") && GhostActive == false)
-        {
-            Debug.Log("t");
-            StartCoroutine(Ghost());
-        }
+        //if (Input.GetKeyDown("t") && GhostActive == false)
+        //{
+        //    Debug.Log("t");
+        //    StartCoroutine(Ghost());
+        //}
 
-        if (Input.GetKeyDown("y") && ScoreActive == false)
-        {
-            Debug.Log("y");
-            StartCoroutine(ScoreMultiplier());
-        }
+        //if (Input.GetKeyDown("y") && ScoreActive == false)
+        //{
+        //    Debug.Log("y");
+        //    StartCoroutine(ScoreMultiplier());
+        //}
 
-        if (Input.GetKeyDown("u") && SlowdownActive == false)
-        {
-            Debug.Log("u");
-            StartCoroutine(Slowdown());
-        }
+        //if (Input.GetKeyDown("u") && SlowdownActive == false)
+        //{
+        //    Debug.Log("u");
+        //    StartCoroutine(Slowdown());
+        //}
 
         if (GhostActive) ghostslider.value -= Time.deltaTime / 5;
         if (ScoreActive) scoreslider.value -= Time.deltaTime / 5;
@@ -154,7 +156,7 @@ public class PowerUps : MonoBehaviour
     private void powerselector()
     {
         var temp = Random.Range(0, 3);
-        if (GhostActive && SlowdownActive && ScoreActive) return;
+        if ((GhostActive && SlowdownActive && ScoreActive)||(GhostActive&&ScoreActive&&move.speed<=10)) return;
         switch (temp)
         {
             case 0:
@@ -164,7 +166,7 @@ public class PowerUps : MonoBehaviour
                     powerselector();
                 break;
             case 1:
-                if (!SlowdownActive)
+                if (!SlowdownActive&&move.speed>10)
                     StartCoroutine(Slowdown());
                 else
                     powerselector();
@@ -175,6 +177,8 @@ public class PowerUps : MonoBehaviour
                 else
                     powerselector();
                 break;
+            default:
+                return;
         }
     }
 
