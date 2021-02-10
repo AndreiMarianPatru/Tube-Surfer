@@ -16,7 +16,7 @@ public class ESC : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Main Menu");
         }
 
     }

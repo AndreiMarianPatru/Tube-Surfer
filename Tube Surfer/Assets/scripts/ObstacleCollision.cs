@@ -26,7 +26,7 @@ public class ObstacleCollision : MonoBehaviour
             HighScores.AddToHS(Mathf.RoundToInt(Scoring.score));
          
             Debug.Log(collision.gameObject.name+" hit "+gameObject.name+" at "+collision.GetContact(0));
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Main Menu");
 
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class tutorialTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
+    GameObject button;
     void Start()
     {
         
@@ -21,7 +22,7 @@ public class tutorialTrigger : MonoBehaviour
         
         if (other.gameObject.tag=="Player")
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Main Menu");
 
         }
     }

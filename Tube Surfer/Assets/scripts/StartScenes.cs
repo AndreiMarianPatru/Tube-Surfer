@@ -17,24 +17,24 @@ public class StartScenes : MonoBehaviour
     {
       if(Input.GetKeyDown("space"))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("Main Game");
         }
 
     }
 
     public void StartTutorial()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void StartMainGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Main Game");
     }
 
     public void StartHighscores()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("Highscores");
     }
 
     public void Quit()
