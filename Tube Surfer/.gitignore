@@ -10,6 +10,7 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 /[Aa]ssets/TerrainTexturesPackFree/
+/[Tt]ube Surfer/Assets/TerrainTexturesPackFree/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta

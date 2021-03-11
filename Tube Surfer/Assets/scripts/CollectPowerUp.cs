@@ -6,6 +6,7 @@ public class CollectPowerUp : MonoBehaviour
 {
     // Start is called before the first frame update
     private PowerUps powers;
+    public AudioSource audioSource;
     private bool flag;
     void Start()
     {
@@ -23,11 +24,13 @@ public class CollectPowerUp : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            audioSource.Play();
             Debug.Log("collision powerup");
             if (flag == false)
             {
                 flag = true;
                 Debug.Log("this is called");
+                
                 StartCoroutine(powers.GetPowerups());
             }
         }
