@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Scoring : MonoBehaviour
 {
 
     public static float score;
     public float boost;
-
-    public TextMeshProUGUI scoreUI;
+    
+    public Text scoreUI;
     // Start is called before the first frame update
     void Start()
     {

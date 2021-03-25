@@ -14,7 +14,7 @@ public class PowerUps : MonoBehaviour
     public Slider ghostslider;
     public bool ScoreActive;
     public Slider scoreslider;
-    public TextMeshProUGUI scoreUI;
+    public Text scoreUI;
     public bool SlowdownActive;
     public Slider slowdownslider;
     private bool slowdowsnactive1;
