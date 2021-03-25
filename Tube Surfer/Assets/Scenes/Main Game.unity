@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boost: 0
-  scoreUI: {fileID: 0}
+  scoreUI: {fileID: 1671730911}
 --- !u!114 &827316872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,7 +982,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 211.46997, y: -150}
+  m_AnchoredPosition: {x: 211.47021, y: -150}
   m_SizeDelta: {x: 362.94543, y: 69.956604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906825362
@@ -1519,7 +1519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 211.46997, y: -244}
+  m_AnchoredPosition: {x: 211.47021, y: -244}
   m_SizeDelta: {x: 362.94543, y: 69.956604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1758032022
@@ -1660,7 +1660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 211.46997, y: -336.3}
+  m_AnchoredPosition: {x: 211.47021, y: -336.30005}
   m_SizeDelta: {x: 362.94543, y: 69.956604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1893163588
@@ -1823,6 +1823,10 @@ PrefabInstance:
     - target: {fileID: 8362956004024557115, guid: ed8a6394da540014986f1d05e6222a3f, type: 3}
       propertyPath: m_Name
       value: L1V2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362956004024557115, guid: ed8a6394da540014986f1d05e6222a3f, type: 3}
+      propertyPath: m_TagString
+      value: Tube
       objectReference: {fileID: 0}
     - target: {fileID: 9170701589624308865, guid: ed8a6394da540014986f1d05e6222a3f, type: 3}
       propertyPath: m_RootOrder
@@ -2201,7 +2205,7 @@ GameObject:
   - component: {fileID: 5715118915970381486}
   m_Layer: 0
   m_Name: L3V2
-  m_TagString: Untagged
+  m_TagString: Tube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2952,7 +2956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7274334368051325044, guid: 6d03c61e21417af41898070d0ffa0785, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7274334368051325044, guid: 6d03c61e21417af41898070d0ffa0785, type: 3}
       propertyPath: m_TagString
