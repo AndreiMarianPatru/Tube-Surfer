@@ -6,6 +6,7 @@ public class Rotate : MonoBehaviour
 {
     Collider m_Collider;
     Vector3 m_Center;
+    public static  bool swapped;
 
 
     void Start()
@@ -19,18 +20,37 @@ public class Rotate : MonoBehaviour
     // Update is called once per frame
         void Update()
     {
-        if (Input.GetKey("a"))
+        if(swapped==true)
         {
-            transform.RotateAround(m_Center, Vector3.forward, 80 * Time.deltaTime);
-           
-           // Debug.Log("a");
+            if (Input.GetKey("d"))
+            {
+                transform.RotateAround(m_Center, Vector3.forward, 80 * Time.deltaTime);
+
+                // Debug.Log("a");
+            }
+            if (Input.GetKey("a"))
+            {
+                transform.RotateAround(m_Center, Vector3.forward, -80 * Time.deltaTime);
+
+                //  Debug.Log("d");
+            }
         }
-        if (Input.GetKey("d"))
+        if(swapped==false)
         {
-            transform.RotateAround(m_Center, Vector3.forward, -80 * Time.deltaTime);
-          
-          //  Debug.Log("d");
+            if (Input.GetKey("a"))
+            {
+                transform.RotateAround(m_Center, Vector3.forward, 80 * Time.deltaTime);
+
+                // Debug.Log("a");
+            }
+            if (Input.GetKey("d"))
+            {
+                transform.RotateAround(m_Center, Vector3.forward, -80 * Time.deltaTime);
+
+                //  Debug.Log("d");
+            }
         }
+        
 
     }
 }

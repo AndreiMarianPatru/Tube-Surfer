@@ -8,7 +8,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool up;
     private bool down;
+
+    public bool swapped;
    
+
 
     // Start is called before the first frame update
     private void Start()
@@ -23,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //Debug.Log(rb.velocity);
-        if (Input.GetKey("w"))
+        if (Input.GetKey("w")|| Input.GetKey("space"))
             up = true;
         else
             up = false;
