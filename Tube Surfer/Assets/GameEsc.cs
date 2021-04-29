@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameEsc : MonoBehaviour
@@ -13,6 +14,7 @@ public class GameEsc : MonoBehaviour
     public Sprite OffSprite;
     public Sprite OnSprite;
     public Rotate rotate;
+    public Slider volumeslider;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,7 @@ public class GameEsc : MonoBehaviour
                 Time.timeScale = 1;
                 return;
             }
-            if (paused==false)
+            if (paused == false)
 
             {
                 Debug.Log("paused");
@@ -50,19 +52,19 @@ public class GameEsc : MonoBehaviour
                 return;
 
             }
-           
+
         }
     }
 
     public void SwapAD()
     {
         ADswaped = !ADswaped;
-        if(ADswaped==true)
+        if (ADswaped == true)
         {
             swapADbutton.image.sprite = OnSprite;
             Rotate.swapped = true;
         }
-        if(ADswaped==false)
+        if (ADswaped == false)
         {
             swapADbutton.image.sprite = OffSprite;
             Rotate.swapped = false;
@@ -87,5 +89,18 @@ public class GameEsc : MonoBehaviour
 
 
     }
+    public void Quittomainmenu()
+    {
+
+        SceneManager.LoadScene("Main Menu");
+    }
+
+
+    public void changeVolume(System.Single newVolume)
+    {
+        PlayerPrefs.SetFloat("volume", newVolume);
+        AudioListener.volume = PlayerPrefs.GetFloat("volume");
+    }
 }
+
 
