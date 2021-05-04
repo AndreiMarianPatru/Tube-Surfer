@@ -24,7 +24,10 @@ public class StartScenes : MonoBehaviour
 
     public void StartTutorial()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        Resources.UnloadUnusedAssets();
+       // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
     }
 
     public void StartMainGame()
